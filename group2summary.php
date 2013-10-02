@@ -19,7 +19,7 @@ $content .=  <<< EOT
 <script>
 cj(function($){
   if ($(".crm-contact_type_label").length == 0) {
-    CRM.notify("Someone has changed the summary layout, groups can't be displayed properly");
+    CRM.alert("Someone has changed the summary layout, groups can't be displayed properly");
     return;
   }
   $(".crm-contact_type_label").parent().parent().prepend($("#groups").html());
