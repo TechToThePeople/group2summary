@@ -1,14 +1,17 @@
 <?php
 
 require_once 'group2summary.civix.php';
+require_once ("api/class.api.php");
 
 function group2summary_civicrm_summary( $contactID, &$content) {
-//beware, exceptions thrown. you should add a try catch
-$group = civicrm_api3('GroupContact', 'get', array("sequential"=>true,"contact_id"=>$contactID ));
+$api = new civicrm_api3();
+
+$api->GroupContact->get(array("contact_id"=>$contactID ));
+
 $content = "<div id='groups'><div class='crm-summary-row'><div class='crm-label'>Groups</div><div class='crm-content'>";
 
-foreach ($group["values"] as $g) {
-  $content .= $g["title"] .", ";
+foreach ($api->values as $g) {
+  $content .= $g->title .", ";
 }
 $content .= "</div></div></div>";
 
