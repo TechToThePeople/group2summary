@@ -3,6 +3,9 @@
 require_once 'group2summary.civix.php';
 
 function group2summary_civicrm_summary( $contactID, &$content) {
+  CRM_Core_Resources::singleton()
+    ->addScriptFile('civicrm', 'packages/backbone/underscore.js', 110, 'html-header', FALSE);
+
   CRM_Core_Region::instance('page-body')->add(array(
     'template' => 'group2summary.tpl'
   ));
