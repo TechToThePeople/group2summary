@@ -7,8 +7,8 @@
   <div class='crm-summary-row'>
     <div class='crm-label'>Groups</div>
     <div class='crm-content'>
-      {foreach from=$result.values item=g}
-        {$g.title}, 
+      {foreach from=$result.values item=g name=groups}
+        {$g.title}{if (!$smarty.foreach.groups.last)}, {/if} 
       {/foreach}
     </div>
   </div>
