@@ -9,12 +9,12 @@
 
 <script>
 {* 
-var contact_id = {$contactId};
+var data={crmAPI entity='GroupContact' action='get' sequential=1 contact_id=$contactId};
 to avoid creating javascript global variables, wrap them in an anonymous function and assign the parameters from smarty variables on the last line before {/literal} 
 *}
 
 {literal}
-(function(contact_id){
+(function(contact_id,data){
 
 cj(function($){
   if ($(".crm-contact_type_label").length == 0) {
@@ -24,22 +24,17 @@ cj(function($){
   $(".crm-contact_type_label").parent().parent().prepend($("#groups").html());
   $("#groups").remove();
 
-  $("#load_groups").click(function(){
-    $(".groups .crm-content").html("loading...");
-    CRM.api('GroupContact', 'get', {'sequential': 1, 'contact_id': 203},
-      {success: function(data) {
-        var groups=[];
-        $.each(data.values, function(key) {
-          groups.push(data.values[key].title);
-        });
-        $(".groups .crm-content").html(groups);
-    }
-  }
-);
+  var groups=[];
+  $.each(data.values, function(key) {
+    groups.push(data.values[key].title);
   });
-});
+  $(".groups .crm-content").html(groups);
+    
+  });
 
 }
 {/literal}
-({$contactId}));
+({$contactId},
+{crmAPI entity='GroupContact' action='get' sequential=1 contact_id=$contactId}
+));
 </script>
