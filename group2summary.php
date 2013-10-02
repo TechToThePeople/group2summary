@@ -3,7 +3,8 @@
 require_once 'group2summary.civix.php';
 
 function group2summary_civicrm_summary( $contactID, &$content) {
-$group = civicrm_api('GroupContact', 'get', array("version"=>3, "sequential"=>true,"contact_id"=>$contactID ));
+//beware, exceptions thrown. you should add a try catch
+$group = civicrm_api3('GroupContact', 'get', array("sequential"=>true,"contact_id"=>$contactID ));
 $content = "<div id='groups'><div class='crm-summary-row'><div class='crm-label'>Groups</div><div class='crm-content'>";
 
 foreach ($group["values"] as $g) {
