@@ -2,7 +2,7 @@
 <extension key="eu.tttp.group2summary" type="module">
   <file>group2summary</file>
   <name>Display the groups in the contact summary</name>
-  <description>You like how tags are displayed in the contact summary? this extension does the same, for groups</description>
+  <description>You like how tags are displayed in the contact summary? this extension does the same, for groups. You can also add the contact to a group from the summary (click on the Groups label)</description>
   <license>aGPL3</license>
   <maintainer>
     <author>xavier dutoit</author>
