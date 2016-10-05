@@ -9,7 +9,7 @@
 
 {* 
 var data={crmAPI entity='GroupContact' action='get' sequential=1 contact_id=$contactId};
-to avoid creating javascript global variables, wrap them in an anonymous function and assign the parameters from smarty variables on the last line before {/literal} 
+to avoid creating javascript global variables, wrap them in an anonymous function and assign the parameters from smarty variables on the last line before
 *}
 
 {literal}
@@ -36,26 +36,23 @@ cj(function($){
 
     
   $(".groups .crm-label").click(function(){
-    CRM.api('Group', 'get', {'sequential': 1},
-      {success: function(data) {
-        var groups= "<ul id='group_add'>";
-        $.each(data.values, function(key) {
-          groups = groups + "<li data-id='"+data.values[key].id+"'>"+data.values[key].title+"</li>";
-        });
-        groups = groups + "<ul>";
-        CRM.alert(groups,"add to a group","info",{expires:0});
-        $("#group_add li").click(function(){
-          var id = $(this).data("id");
-          var name = $(this).html();
-          CRM.api('GroupContact', 'create', {'sequential': 1, 'group_id':id,'contact_id': contact_id},
-           {success: function(data) {
-              var groups =$(".groups .crm-content").html();
-              $(".groups .crm-content").html(groups+","+name);
-              CRM.alert("group added",name,"success");
-           }}
-         ); 
-      })
-     }
+    CRM.api3('Group', 'get', {'sequential': 1},false)
+    .done(function(data) {
+      var groups= "<ul id='group_add'>";
+      $.each(data.values, function(key) {
+        groups = groups + "<li data-id='"+data.values[key].id+"'>"+data.values[key].title+"</li>";
+      });
+      groups = groups + "<ul>";
+      CRM.alert(groups,"add to a group","info",{expires:0});
+      $("#group_add li").click(function(){
+        var id = $(this).data("id");
+        var name = $(this).html();
+        CRM.api3('GroupContact', 'create', {'sequential': 1, 'group_id':id,'contact_id': contact_id},"added to group "+name)
+        .done(function(data) {
+          var groups =$(".groups .crm-content").html();
+          $(".groups .crm-content").html(groups+","+name);
+         });
+      }); 
     });
   });
 
