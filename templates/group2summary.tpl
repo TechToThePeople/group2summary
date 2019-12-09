@@ -1,6 +1,6 @@
-<div id='groups'>
+<div id='groups' style="display: none">
   <div class='crm-summary-row groups'>
-    <div class='crm-label'>Groups</div>
+    <div class='crm-label'>{ts}Groups{/ts}</div>
     <div class='crm-content'>
       <span id="load_groups" class="crm-button">show me<span>
     </div>
@@ -22,7 +22,7 @@ to avoid creating javascript global variables, wrap them in an anonymous functio
 
 cj(function($){
   if ($(".crm-contact_type_label").length == 0) {
-    CRM.alert("Someone has changed the summary layout, groups can't be displayed properly");
+    CRM.console('log', 'group2summary:', "Someone has changed the summary layout, groups can't be displayed properly");
     return;
   }
   $(".crm-contact_type_label").parent().parent().prepend($("#groups").html());
