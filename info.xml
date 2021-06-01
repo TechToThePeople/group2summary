@@ -8,13 +8,11 @@
     <author>xavier dutoit</author>
     <email>xavier@tttp.eu</email>
   </maintainer>
-  <releaseDate>2013-10-02</releaseDate>
-  <version>1.0</version>
+  <releaseDate>2021-06-01</releaseDate>
+  <version>1.1</version>
   <develStage>stable</develStage>
   <compatibility>
-    <ver>4.2</ver>
-    <ver>4.3</ver>
-    <ver>4.4</ver>
+    <ver>5.35</ver>
   </compatibility>
   <civix>
     <namespace>CRM/Group2summary</namespace>
