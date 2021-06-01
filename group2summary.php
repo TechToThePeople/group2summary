@@ -11,9 +11,6 @@ function group2summary_civicrm_summary( $contactID, &$content) {
   ));
 }
 
-
-
-
 /* default behaviour */
 
 /**
@@ -36,28 +33,35 @@ function group2summary_civicrm_xmlMenu(&$files) {
  * Implementation of hook_civicrm_install
  */
 function group2summary_civicrm_install() {
-  return _group2summary_civix_civicrm_install();
+  _group2summary_civix_civicrm_install();
+}
+
+/**
+ * Implementation of hook_civicrm_postInstall
+ */
+function group2summary_civicrm_postInstall() {
+  _group2summary_civix_civicrm_postInstall();
 }
 
 /**
  * Implementation of hook_civicrm_uninstall
  */
 function group2summary_civicrm_uninstall() {
-  return _group2summary_civix_civicrm_uninstall();
+  _group2summary_civix_civicrm_uninstall();
 }
 
 /**
  * Implementation of hook_civicrm_enable
  */
 function group2summary_civicrm_enable() {
-  return _group2summary_civix_civicrm_enable();
+  _group2summary_civix_civicrm_enable();
 }
 
 /**
  * Implementation of hook_civicrm_disable
  */
 function group2summary_civicrm_disable() {
-  return _group2summary_civix_civicrm_disable();
+  _group2summary_civix_civicrm_disable();
 }
 
 /**
@@ -80,5 +84,5 @@ function group2summary_civicrm_upgrade($op, CRM_Queue_Queue $queue = NULL) {
  * is installed, disabled, uninstalled.
  */
 function group2summary_civicrm_managed(&$entities) {
-  return _group2summary_civix_civicrm_managed($entities);
+  _group2summary_civix_civicrm_managed($entities);
 }
